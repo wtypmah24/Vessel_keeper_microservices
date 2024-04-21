@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create_table_certificate" author="T. Shevchenko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="seaman_certificate"/>
+            </not>
+        </preConditions>
+        <createTable tableName="seaman_certificate">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="text"/>
+            <column name="expire_date" type="DATE"/>
+            <column name="seaman_id" type="BIGINT">
+                <constraints foreignKeyName="seaman_id" references="seaman(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="insert_certificate" author="S. Taras">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM seaman_certificate</sqlCheck>
+        </preConditions>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="SOLAS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="1"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="1"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="2"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="2"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="3"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="3"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="4"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="4"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="5"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="5"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="6"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="6"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="7"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="7"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="8"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="8"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="9"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="9"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="10"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="10"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="11"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="11"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="12"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="12"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="13"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="13"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="14"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="14"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="15"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="15"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="16"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="16"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="17"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="17"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="18"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="18"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="19"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="19"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="20"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="20"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="21"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="21"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="22"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="22"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="23"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="23"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="24"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="24"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="25"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="25"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2025-03-01"/>
+            <column name="seaman_id" value="26"/>
+        </insert>
+        <insert tableName="seaman_certificate">
+            <column name="name" value="ISPS"/>
+            <column name="expire_date" value="2023-03-01"/>
+            <column name="seaman_id" value="26"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

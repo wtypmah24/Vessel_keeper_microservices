@@ -1,0 +1,119 @@
+version: '3'
+services:
+  
+  #Run RabbitMQ
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672" 
+    networks:
+      - my-network
+  
+  #Run DB for vessel service
+  db_vessel:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: VesselService
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+    ports:
+      - "5433:5432"
+    networks:
+      - my-network
+
+  #Run DB for voyage service    
+  db_voyage:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: VoyageService
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+    ports:
+      - "5434:5432"
+    networks:
+      - my-network
+
+  #Run DB for crew service    
+  db_crew:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: CrewService
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+    ports:
+      - "5435:5432"
+    networks:
+      - my-network
+
+  #Run DB for user service (Registration and auth.)
+  db_user:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: UserService
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+    ports:
+      - "5436:5432"
+    networks:
+      - my-network
+
+  #Run GateWay Service
+  app_gate:
+    build: ./Gateway_Service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitmq
+    networks:
+      - my-network    
+    
+  #Run User service    
+  app_user:
+    build: ./Authorization_Service
+    ports:
+      - "8085:8085"
+    depends_on:
+      - db_user
+      - rabbitmq
+    networks:
+      - my-network
+
+
+  #Run Vessel service    
+  app_vessel:
+    build: ./Vessel_Service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - db_vessel
+      - rabbitmq
+    networks:
+      - my-network
+
+  #Run Voyage service    
+  app_voyage:
+    build: ./Voyage_Service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db_voyage
+      - rabbitmq
+    networks:
+      - my-network
+
+  #Run Crew Service    
+  app_crew:
+    build: ./Crew_Service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db_crew
+      - rabbitmq
+    networks:
+      - my-network
+#Arange coomt net for all services      
+networks:
+  my-network:
+    driver: bridge
+  

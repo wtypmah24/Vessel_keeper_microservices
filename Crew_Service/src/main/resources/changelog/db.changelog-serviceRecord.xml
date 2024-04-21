@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="Create table record_of_service" author="T. Shevchenko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="record_of_service"/>
+            </not>
+        </preConditions>
+        <createTable tableName="record_of_service">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="seaman_id" type="BIGINT">
+                <constraints foreignKeyName="seaman_id" references="seaman(id)"/>
+            </column>
+            <column name="vessel_imo_number" type="BIGINT"/>
+            <column name="comment" type="text"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="insert_service_record" author="S. Taras">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM record_of_service</sqlCheck>
+        </preConditions>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="1"/>
+            <column name="vessel_imo_number" value="9504748"/>
+            <column name="comment" value="GOOD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="2"/>
+            <column name="vessel_imo_number" value="9537276"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="3"/>
+            <column name="vessel_imo_number" value="9303314"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="4"/>
+            <column name="vessel_imo_number" value="9386976"/>
+            <column name="comment" value="GOOD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="5"/>
+            <column name="vessel_imo_number" value="9947770"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="6"/>
+            <column name="vessel_imo_number" value="9504724"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="7"/>
+            <column name="vessel_imo_number" value="9433327"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="8"/>
+            <column name="vessel_imo_number" value="9369526"/>
+            <column name="comment" value="GOOD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="9"/>
+            <column name="vessel_imo_number" value="9421116"/>
+            <column name="comment" value="GODD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="10"/>
+            <column name="vessel_imo_number" value="9963401"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="11"/>
+            <column name="vessel_imo_number" value="9504748"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="12"/>
+            <column name="vessel_imo_number" value="9537276"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="13"/>
+            <column name="vessel_imo_number" value="9303314"/>
+            <column name="comment" value="GOOD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="14"/>
+            <column name="vessel_imo_number" value="9386976"/>
+            <column name="comment" value="GOOD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="15"/>
+            <column name="vessel_imo_number" value="9947770"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="16"/>
+            <column name="vessel_imo_number" value="9504724"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="17"/>
+            <column name="vessel_imo_number" value="9433327"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="18"/>
+            <column name="vessel_imo_number" value="9369526"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="19"/>
+            <column name="vessel_imo_number" value="9421116"/>
+            <column name="comment" value="GOOD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="20"/>
+            <column name="vessel_imo_number" value="9963401"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="21"/>
+            <column name="vessel_imo_number" value="9504748"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="22"/>
+            <column name="vessel_imo_number" value="9537276"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="23"/>
+            <column name="vessel_imo_number" value="9303314"/>
+            <column name="comment" value="GOOD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="24"/>
+            <column name="vessel_imo_number" value="9386976"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="25"/>
+            <column name="vessel_imo_number" value="9947770"/>
+            <column name="comment" value="BAD"/>
+        </insert>
+        <insert tableName="record_of_service">
+            <column name="seaman_id" value="26"/>
+            <column name="vessel_imo_number" value="9504724"/>
+            <column name="comment" value="ACCEPTABLE"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

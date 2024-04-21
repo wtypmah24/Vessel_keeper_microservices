@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create_table_seaman" author="T. Shevchenko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="seaman"/>
+            </not>
+        </preConditions>
+        <createTable tableName="seaman">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="text"/>
+            <column name="rank" type="text"/>
+            <column name="has_job" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="insert_seamen" author="S. Taras">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM seaman</sqlCheck>
+        </preConditions>
+        <insert tableName="seaman">
+            <column name="name" value="Bobr Kurwa"/>
+            <column name="rank" value="ENGINEER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="John Smith"/>
+            <column name="rank" value="CAPTAIN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Michael Johnson"/>
+            <column name="rank" value="CAPTAIN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="William Brown"/>
+            <column name="rank" value="CAPTAIN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="James Davis"/>
+            <column name="rank" value="CAPTAIN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Robert Miller"/>
+            <column name="rank" value="CAPTAIN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="David Wilson"/>
+            <column name="rank" value="ENGINEER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="John Smith"/>
+            <column name="rank" value="ENGINEER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="John Smith"/>
+            <column name="rank" value="ENGINEER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Richard Moore"/>
+            <column name="rank" value="ENGINEER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Joseph Taylor"/>
+            <column name="rank" value="ENGINEER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Thomas Anderson"/>
+            <column name="rank" value="CHIEF_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Charles Jackson"/>
+            <column name="rank" value="CHIEF_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Christopher White"/>
+            <column name="rank" value="CHIEF_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Daniel Harris"/>
+            <column name="rank" value="CHIEF_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Matthew Martin"/>
+            <column name="rank" value="CHIEF_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Anthony Thompson"/>
+            <column name="rank" value="SECOND_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Patricia Garcia"/>
+            <column name="rank" value="SECOND_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Linda Martinez"/>
+            <column name="rank" value="SECOND_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Barbara Robinson"/>
+            <column name="rank" value="SECOND_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Elizabeth Clark"/>
+            <column name="rank" value="SECOND_OFFICER"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Jennifer Lewis"/>
+            <column name="rank" value="ORDINARY_SEAMAN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Mary Lee"/>
+            <column name="rank" value="ORDINARY_SEAMAN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Jessica Walker"/>
+            <column name="rank" value="ORDINARY_SEAMAN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Sarah Hall"/>
+            <column name="rank" value="ORDINARY_SEAMAN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+        <insert tableName="seaman">
+            <column name="name" value="Karen Young"/>
+            <column name="rank" value="ORDINARY_SEAMAN"/>
+            <column name="has_job" valueBoolean="false"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <changeSet id="create_table_voyage" author="T. Shevchenko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="voyage"/>
+            </not>
+        </preConditions>
+        <createTable tableName="voyage">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="port_of_loading" type="text"/>
+            <column name="port_of_discharging" type="text"/>
+            <column name="start_date" type="DATE"/>
+            <column name="end_date" type="DATE"/>
+            <column name="is_vacant" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="insert_voyage_data" author="S. Taras">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM voyage</sqlCheck>
+        </preConditions>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Bremen"/>
+            <column name="port_of_discharging" value="New Orleans"/>
+            <column name="start_date" value="2024-04-01"/>
+            <column name="end_date" value="2024-05-10"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Hamburg"/>
+            <column name="port_of_discharging" value="San Lorenzo"/>
+            <column name="start_date" value="2024-04-15"/>
+            <column name="end_date" value="2024-05-20"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Houston"/>
+            <column name="port_of_discharging" value="Rostock"/>
+            <column name="start_date" value="2024-04-11"/>
+            <column name="end_date" value="2024-06-01"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="New York"/>
+            <column name="port_of_discharging" value="Nan-tong"/>
+            <column name="start_date" value="2024-04-13"/>
+            <column name="end_date" value="2024-04-23"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Shanghai"/>
+            <column name="port_of_discharging" value="Malta"/>
+            <column name="start_date" value="2024-04-10"/>
+            <column name="end_date" value="2024-05-03"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Perth"/>
+            <column name="port_of_discharging" value="Toronto"/>
+            <column name="start_date" value="2024-04-15"/>
+            <column name="end_date" value="2024-05-13"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Hong Kong"/>
+            <column name="port_of_discharging" value="Izmir"/>
+            <column name="start_date" value="2024-04-06"/>
+            <column name="end_date" value="2024-06-02"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Durban"/>
+            <column name="port_of_discharging" value="Le Havr"/>
+            <column name="start_date" value="2024-04-22"/>
+            <column name="end_date" value="2024-05-09"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Rio De Janeiro"/>
+            <column name="port_of_discharging" value="Odessa"/>
+            <column name="start_date" value="2024-04-15"/>
+            <column name="end_date" value="2024-06-05"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+        <insert tableName="voyage">
+            <column name="port_of_loading" value="Long Bach"/>
+            <column name="port_of_discharging" value="Kotka"/>
+            <column name="start_date" value="2024-04-17"/>
+            <column name="end_date" value="2024-06-02"/>
+            <column name="is_vacant" value="true"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

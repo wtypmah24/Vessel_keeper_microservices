@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create_table_vessel" author="T. Shevchenko">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="vessel"/>
+            </not>
+        </preConditions>
+        <createTable tableName="vessel">
+            <column name="imo_number" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="text"/>
+            <column name="vessel_type" type="text"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="insert_vessels" author="S. Taras">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM vessel</sqlCheck>
+        </preConditions>
+        <insert tableName="vessel">
+            <column name="name" value="BBC Citrine"/>
+            <column name="vessel_type" value="GENERAL_CARGO"/>
+            <column name="imo_number" value="9504748"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="BBC Pluto"/>
+            <column name="vessel_type" value="BULKER"/>
+            <column name="imo_number" value="9537276"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="Sjard"/>
+            <column name="vessel_type" value="HEAVY_LIFT"/>
+            <column name="imo_number" value="9303314"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="Wybelsum"/>
+            <column name="vessel_type" value="HEAVY_LIFT"/>
+            <column name="imo_number" value="9386976"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="BBC Mars"/>
+            <column name="vessel_type" value="BULKER"/>
+            <column name="imo_number" value="9947770"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="BBC Amethyst"/>
+            <column name="vessel_type" value="HEAVY_LIFT"/>
+            <column name="imo_number" value="9504724"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="BBC Austria"/>
+            <column name="vessel_type" value="GENERAL_CARGO"/>
+            <column name="imo_number" value="9433327"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="BREB Treader"/>
+            <column name="vessel_type" value="BULKER"/>
+            <column name="imo_number" value="9369526"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="BBC Lade"/>
+            <column name="vessel_type" value="GENERAL_CARGO"/>
+            <column name="imo_number" value="9421116"/>
+        </insert>
+        <insert tableName="vessel">
+            <column name="name" value="BBC Philippines"/>
+            <column name="vessel_type" value="BULKER"/>
+            <column name="imo_number" value="9963401"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
