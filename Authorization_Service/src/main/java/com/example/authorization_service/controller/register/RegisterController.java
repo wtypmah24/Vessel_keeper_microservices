@@ -13,12 +13,10 @@ import org.springdoc.api.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/register")
 @Tag(name = "Registration", description = "Endpoints for user registration")
 public class RegisterController {
     private final UserService userService;
@@ -28,7 +26,7 @@ public class RegisterController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
+    @PostMapping("/newuser")
     @Operation(summary = "Register a new user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "User registered"),

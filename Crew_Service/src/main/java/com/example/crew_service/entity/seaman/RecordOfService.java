@@ -6,6 +6,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Entity class representing a record of service.
+ */
 @Entity
 @Table(name = "record_of_service")
 @Data

@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/login")
 @Tag(name = "Authentication", description = "Endpoints for user authentication")
 public class AuthController {
 
@@ -29,7 +31,7 @@ public class AuthController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Token generated")
     })
-    @PostMapping("/login")
+    @PostMapping("/signin")
     public String login(Authentication authentication) {
         return tokenService.generateToken(authentication);
     }

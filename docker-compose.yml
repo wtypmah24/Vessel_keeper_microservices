@@ -59,7 +59,7 @@ services:
       - my-network
 
   #Run GateWay Service
-  app_gate:
+  app-gate:
     build: ./Gateway_Service
     ports:
       - "8080:8080"
@@ -69,7 +69,7 @@ services:
       - my-network    
     
   #Run User service    
-  app_user:
+  app-user:
     build: ./Authorization_Service
     ports:
       - "8085:8085"
@@ -81,7 +81,7 @@ services:
 
 
   #Run Vessel service    
-  app_vessel:
+  app-vessel:
     build: ./Vessel_Service
     ports:
       - "8082:8082"
@@ -92,7 +92,7 @@ services:
       - my-network
 
   #Run Voyage service    
-  app_voyage:
+  app-voyage:
     build: ./Voyage_Service
     ports:
       - "8083:8083"
@@ -103,7 +103,7 @@ services:
       - my-network
 
   #Run Crew Service    
-  app_crew:
+  app-crew:
     build: ./Crew_Service
     ports:
       - "8081:8081"
@@ -112,8 +112,8 @@ services:
       - rabbitmq
     networks:
       - my-network
+
 #Arange coomt net for all services      
 networks:
   my-network:
     driver: bridge
-  

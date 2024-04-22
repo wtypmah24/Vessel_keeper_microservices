@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * Entity class representing a voyage.
+ */
 @Entity
 @Table(name = "voyage")
 @NoArgsConstructor

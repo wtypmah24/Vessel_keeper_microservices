@@ -8,6 +8,9 @@ import lombok.ToString;
 
 import java.time.LocalDate;
 
+/**
+ * Entity class representing a seaman's certificate.
+ */
 @Entity
 @Table(name = "seaman_certificate")
 @Data

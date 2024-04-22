@@ -1,7 +1,7 @@
 package com.example.crew_service.service.seaman;
 
-import com.example.crew_service.dto.CertificateRequestDto;
-import com.example.crew_service.dto.CertificateResponseDto;
+import com.example.crew_service.dto.certificate.CertificateRequestDto;
+import com.example.crew_service.dto.certificate.CertificateResponseDto;
 import com.example.crew_service.entity.seaman.Seaman;
 import com.example.crew_service.entity.seaman.SeamanCertificate;
 import com.example.crew_service.exception.SeamanCertificateException;
@@ -17,14 +17,22 @@ import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
+/**
+ * Service class for managing seaman certificates.
+ */
 @Service
 public class CertificateService {
     private final CertificateMapper certificateMapper;
     private final CertificateRepository certificateRepository;
     private final SeamanRepository seamanRepository;
 
-
+    /**
+     * Constructs a CertificateService with the given dependencies.
+     *
+     * @param certificateMapper     The mapper for mapping between DTOs and entities related to certificates
+     * @param certificateRepository The repository for managing certificate entities
+     * @param seamanRepository      The repository for managing seaman entities
+     */
     @Autowired
     public CertificateService(CertificateMapper certificateMapper, CertificateRepository certificateRepository, SeamanRepository seamanRepository) {
         this.certificateMapper = certificateMapper;
@@ -32,7 +40,15 @@ public class CertificateService {
         this.seamanRepository = seamanRepository;
     }
 
-
+    /**
+     * Adds a certificate to a seaman.
+     *
+     * @param candidate The certificate request DTO
+     * @param seamanId  The ID of the seaman
+     * @return A set of certificate response DTOs
+     * @throws SeamanException            if the seaman with the provided ID is not found
+     * @throws SeamanCertificateException if the provided certificate request DTO is invalid
+     */
     @Transactional
     public Set<CertificateResponseDto> addCertificateToSeaman(CertificateRequestDto candidate, long seamanId) throws SeamanException, SeamanCertificateException {
         checkCertificateCandidate(candidate);
@@ -43,7 +59,13 @@ public class CertificateService {
                 .collect(Collectors.toSet());
     }
 
-
+    /**
+     * Deletes a certificate.
+     *
+     * @param id The ID of the certificate to delete
+     * @return A set of certificate response DTOs
+     * @throws SeamanCertificateException if the certificate with the provided ID is not found
+     */
     @Transactional
     public Set<CertificateResponseDto> deleteCertificate(long id) throws SeamanCertificateException {
         SeamanCertificate certificate = certificateRepository.findById(id).orElseThrow(() -> new SeamanCertificateException("There is no certificate with id: " + id));
@@ -54,15 +76,34 @@ public class CertificateService {
                 .map(certificateMapper::certificateToCertificateResponseDto)
                 .collect(Collectors.toSet());
     }
+
+    /**
+     * Adds a certificate to the database.
+     *
+     * @param candidate The certificate request DTO
+     * @return The saved seaman certificate entity
+     */
     @Transactional
-    private SeamanCertificate addCertificateToDb(CertificateRequestDto candidate) {
+    public SeamanCertificate addCertificateToDb(CertificateRequestDto candidate) {
         return certificateRepository.save(certificateMapper.certificateRequestDtoToCertificate(candidate));
     }
 
-    private void removeCertificateFromDb(SeamanCertificate certificate) {
+    /**
+     * Removes a certificate from the database.
+     *
+     * @param certificate The seaman certificate entity to remove
+     */
+    @Transactional
+    public void removeCertificateFromDb(SeamanCertificate certificate) {
         certificateRepository.delete(certificate);
     }
 
+    /**
+     * Checks if the provided certificate candidate is valid.
+     *
+     * @param candidate The certificate request DTO to check
+     * @throws SeamanCertificateException if the certificate candidate is invalid
+     */
     private void checkCertificateCandidate(CertificateRequestDto candidate) throws SeamanCertificateException {
         if (candidate == null) throw new SeamanCertificateException("You didn't provide certificate to add.");
         if (candidate.name().isBlank()) throw new SeamanCertificateException("You didn't provide certificate's name.");

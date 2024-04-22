@@ -9,6 +9,9 @@ import lombok.ToString;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity class representing a seaman.
+ */
 @Entity
 @Table(name = "seaman")
 @Data
@@ -31,16 +34,34 @@ public class Seaman {
     @OneToMany(mappedBy = "seaman", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<RecordOfService> recordOfServices = new HashSet<>();
 
+    /**
+     * Adds a certificate to the seaman's certificates.
+     *
+     * @param certificate The certificate to add
+     * @return The updated set of certificates
+     */
     public Set<SeamanCertificate> addCertificate(SeamanCertificate certificate) {
         this.certificates.add(certificate);
         certificate.setSeaman(this);
         return certificates;
     }
 
+    /**
+     * Removes a certificate from the seaman's certificates.
+     *
+     * @param certificate The certificate to remove
+     * @return The updated set of certificates
+     */
     public Set<SeamanCertificate> removeCertificate(SeamanCertificate certificate) {
         this.certificates.remove(certificate);
         return certificates;
     }
+
+    /**
+     * Adds a record of service to the seaman's record of services.
+     *
+     * @param record The record of service to add
+     */
 
     public void addServiceRecord(RecordOfService record) {
         this.recordOfServices.add(record);
