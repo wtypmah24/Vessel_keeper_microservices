@@ -55,22 +55,22 @@ To begin using the Marine Vessel Keeper application, follow these steps:
 
 1. Install Docker (If necessary).
 2. Clone the repository from [https://github.com/wtypmah24/Vessel_keeper_microservices.git].
-3. Add an application-secrets.properties file with the following keys and their respective values:
-4. "secret_key" for the Vessel API, "vessel_finder_api_key" for the Vessel Finder API,
-5. and "google_api" for the Google Static Map API.
-4. Navigate to the project directory.
+3. Add your VesselFinder API Key and Google API Key to the environment variables "VESSEL_FINDER_API_KEY" and "GOOGLE_API_KEY" 
+in the [docker-compose.yml](https://github.com/wtypmah24/Vessel_keeper_microservices/blob/main/docker-compose.yml)
+file for the app-finder service.
+4. Navigate to the root directory.
 5. Run docker-compose up command.
 6. To check all end points visit [/swagger-ui.html]
 
 If you want to run it on a server:
 
 1. Clone the repository from [https://github.com/wtypmah24/Vessel_keeper_microservices.git].
-2. Add an application-secrets.properties file with the following keys and their respective values:
-3. "secret_key" for the Vessel API, "vessel_finder_api_key" for the Vessel Finder API, and "google_api"
-4. for the Google Static Map API.
+2. Add your VesselFinder API Key and Google API Key to the environment variables "VESSEL_FINDER_API_KEY" and "GOOGLE_API_KEY" 
+in the [docker-compose.yml](https://github.com/wtypmah24/Vessel_keeper_microservices/blob/main/docker-compose.yml)
+file for the app-finder service.
 3. Run the [bash script](https://github.com/wtypmah24/Vessel_keeper/blob/main/install_dependencies.sh) which will
    download necessary programs such as Git, Java, Maven, Docker, Docker Compose onto the server.
-4. Navigate to the project directory.
+4. Navigate to the root directory.
 5. Run docker-compose up command.
 6. To check all end points visit [/swagger-ui.html]
 

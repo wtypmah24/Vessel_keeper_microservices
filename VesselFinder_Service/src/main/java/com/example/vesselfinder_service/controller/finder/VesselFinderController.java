@@ -4,8 +4,6 @@ import com.example.vesselfinder_service.dto.VesselFinderResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,17 +14,15 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/finder")
-@PropertySource("application-secrets.properties")
 @Tag(name = "Vessel Finder controller.",
         description = "Here you can get real time info about your vessels from 3rd party API.")
 public class VesselFinderController {
     private final VesselFinderClient vesselFinder;
-    private final String userKey;
+    private final String finderApiKey = System.getenv("VESSEL_FINDER_API_KEY");
 
     @Autowired
-    public VesselFinderController(VesselFinderClient vesselFinder, @Value("${vessel_finder_api_key}") String userKey) {
+    public VesselFinderController(VesselFinderClient vesselFinder) {
         this.vesselFinder = vesselFinder;
-        this.userKey = userKey;
     }
 
     @GetMapping("/get_info")
@@ -36,6 +32,12 @@ public class VesselFinderController {
         String imoN = imo.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));
-        return vesselFinder.getInfo(userKey, imoN);
+        return vesselFinder.getInfo(finderApiKey, imoN);
+    }
+
+    @GetMapping("/check_status")
+    @Operation(summary = "Check status of the prepaid VesselFinder API")
+    public String status() {
+        return vesselFinder.getStatus(finderApiKey);
     }
 }

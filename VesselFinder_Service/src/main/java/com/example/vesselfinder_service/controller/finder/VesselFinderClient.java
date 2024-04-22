@@ -14,4 +14,7 @@ public interface VesselFinderClient {
             @RequestParam("userkey") String userKey,
             @RequestParam("imo") String imo
     );
+
+    @GetMapping(path = "/status")
+    String getStatus(@RequestParam("userkey") String userKey);
 }

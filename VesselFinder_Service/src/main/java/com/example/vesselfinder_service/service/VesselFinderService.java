@@ -18,22 +18,19 @@ import java.util.stream.Collectors;
 public class VesselFinderService {
     private final RestTemplate restTemplate;
     private final String apiBaseUrl;
-    private final String apiKey;
+    private final String finderApiKey = System.getenv("VESSEL_FINDER_API_KEY");
 
     /**
      * Constructs a VesselFinderService with the specified dependencies.
      *
      * @param restTemplate The RestTemplate for making HTTP requests.
      * @param apiBaseUrl   The base URL of the vessel finder API.
-     * @param apiKey       The API key for accessing the vessel finder service.
      */
     @Autowired
     public VesselFinderService(RestTemplate restTemplate,
-                               @Value("${vessel_finder_base_url}") String apiBaseUrl,
-                               @Value("${vessel_finder_api_key}") String apiKey) {
+                               @Value("${vessel_finder_base_url}") String apiBaseUrl) {
         this.restTemplate = restTemplate;
         this.apiBaseUrl = apiBaseUrl;
-        this.apiKey = apiKey;
     }
 
     /**
@@ -46,7 +43,7 @@ public class VesselFinderService {
         String imo = imoNumbers.stream().map(String::valueOf).collect(Collectors.joining(","));
         String url = apiBaseUrl + imo;
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url)
-                .queryParam("userkey", apiKey)
+                .queryParam("userkey", finderApiKey)
                 .queryParam("imo", imo);
         VesselFinderResponseDto[] response = restTemplate.getForObject(builder.toUriString(), VesselFinderResponseDto[].class);
         assert response != null;

@@ -118,6 +118,9 @@ services:
     build: ./VesselFinder_Service
     ports:
       - "8084:8084"
+    environment:
+      VESSEL_FINDER_API_KEY: ###
+      GOOGLE_API_KEY: ###
     depends_on:
       - rabbitmq
     networks:

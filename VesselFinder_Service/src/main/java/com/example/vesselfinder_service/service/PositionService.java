@@ -2,7 +2,6 @@ package com.example.vesselfinder_service.service;
 
 import com.example.vesselfinder_service.dto.VesselFinderResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,18 +15,16 @@ import java.util.List;
 @Service
 public class PositionService {
     private final VesselFinderService service;
-    private final String googleApi;
+    private final String googleApi = System.getenv("GOOGLE_API_KEY");
 
     /**
      * Constructs a PositionService with the specified dependencies.
      *
      * @param service   The service for retrieving real-time vessel information.
-     * @param googleApi The Google Maps API key.
      */
     @Autowired
-    public PositionService(VesselFinderService service, @Value("${google_api}") String googleApi) {
+    public PositionService(VesselFinderService service) {
         this.service = service;
-        this.googleApi = googleApi;
     }
 
     /**
