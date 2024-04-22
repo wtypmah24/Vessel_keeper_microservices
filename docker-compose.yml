@@ -112,6 +112,16 @@ services:
       - rabbitmq
     networks:
       - my-network
+  
+  #Run VesselFinder Service    
+  app-finder:
+    build: ./VesselFinder_Service
+    ports:
+      - "8084:8084"
+    depends_on:
+      - rabbitmq
+    networks:
+      - my-network    
 
 #Arange coomt net for all services      
 networks:

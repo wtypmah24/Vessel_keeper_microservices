@@ -18,6 +18,7 @@
 6. [Vessel Service](#vessel-service)
 7. [Voyage Service](#voyage-service)
 8. [Crew Service](#crew-service)
+9. [VessekFinder Service](#vesselfinder-service)
 
 ## Introduction <a name="introduction"></a>
 
@@ -74,15 +75,12 @@ If you want to run it on a server:
 
 ## Authentication Service <a name="authentication-service"></a>
 
-The User Management module allows administrators to manage user accounts within the system.
-Users can have different roles such as OWNER, OPERATIONAL_MANAGER, CREW_MANAGER.
 
-- [UserService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/user/UserService.java):
-  Responsible for user registration, creation, deletion, and retrieval.
-- [UserRepository](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/repository/UserRepository.java):
-  Data access layer for managing user entities.
-- [UserMapper](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/mapper/UserMapper.java):
-  Handles mapping between user DTOs and entities.
+
+- 
+-
+-
+
 
 ## Gateway Service <a name="gate-service"></a> 
 
@@ -92,53 +90,54 @@ Users can have different roles such as OWNER, OPERATIONAL_MANAGER, CREW_MANAGER.
 
 ## Vessel Service <a name="vessel-service"></a>
 
-The Vessel Management module enables users to manage vessel-related information, including vessel
-types and crew members.
+The Vessel Service enables users to manage vessel-related information.
 
-- [VesselService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/vessel/VesselService.java):
+- [VesselService](#):
   Manages vessel creation, deletion, and retrieval.
-- [VesselRepository](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/repository/VesselRepository.java):
+- [VesselRepository](#):
   Provides data access methods for vessel entities.
-- [VesselMapper](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/mapper/VesselMapper.java):
+- [VesselMapper](#):
   Handles mapping between vessel DTOs and entities.
-- [PositionService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/vessel/PositionService.java):
-  Manages functionality to generate a static Google Maps URL with markers
-- for the positions of vessels.
-- [VesselFinderService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/vessel/VesselFinderService.java):
-  Provides functionality to retrieve real-time vessel information from a remote service.
+
 
 ## Voyage Service <a name="voyage-service"></a>
 
-The Voyage Management module facilitates the management of voyage details such as ports of loading and discharging,
+The Voyage Service facilitates the management of voyage details such as ports of loading and discharging,
 start and end dates, and vessel assignments.
 
-- [VoyageService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/voyage/VoyageService.java):
+- [VoyageService](#):
   Manages voyage creation, deletion, and retrieval.
-- [VoyageRepository](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/repository/VoyageRepository.java):
+- [VoyageRepository](#):
   Provides data access methods for voyage entities.
-- [VoyageMapper](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/mapper/VoyageMapper.java):
+- [VoyageMapper](#):
   Handles mapping between voyage DTOs and entities.
 
 ## Crew Service <a name="crew-service"></a>
 
-The Seaman Management module allows users to manage seaman-related information, including certificates
+The Crew Service allows users to manage seaman-related information, including certificates
 and service records.
 
-- [SeamanService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/seaman/SeamanService.java):
+- [SeamanService](#):
   Manages seaman creation, deletion, and retrieval.
-- [SeamanRepository](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/repository/SeamanRepository.java):
+- [SeamanRepository](#):
   Provides data access methods for seaman entities.
-- [SeamanMapper](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/mapper/SeamanMapper.java):
+- [SeamanMapper](#):
   Handles mapping between seaman DTOs and entities.
-- [RecordOfServiceService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/seaman/RecordOfServiceService.java):
+- [RecordOfServiceService](#):
   Manages seamen's record of services.
-- [RecordOfServiceRepository](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/repository/RecordOfServiceRepository.java):
+- [RecordOfServiceRepository](#):
   Provides data access methods for record of services.
-- [RecordOfServiceMapper](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/mapper/RecordOfServiceMapper.java):
+- [RecordOfServiceMapper](#):
   Handles mapping between record of services dto and entity.
-- [CertificateService](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/service/seaman/CertificateService.java):
+- [CertificateService](#):
   Manages seamen's certificate adding and deleting.
-- [CertificateRepository](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/repository/CertificateRepository.java):
+- [CertificateRepository](#):
   Provides data access methods for seamen's certificates entities.
-- [CertificateMapper](https://github.com/wtypmah24/Vessel_keeper/blob/main/src/main/java/com/marine/vessel_keeper/mapper/CertificateMapper.java):
+- [CertificateMapper](#):
   Handles mapping between certificate dtos and entities. 
+
+  ## VesselFinder Service <a name="vesselfinder-service"></a>
+-
+-
+-
+

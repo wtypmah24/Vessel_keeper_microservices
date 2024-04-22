@@ -67,6 +67,8 @@ public class TokenValidationFilter extends AbstractGatewayFilterFactory<TokenVal
             return true;
         } else if ("OPERATIONAL_MANAGER".equals(role) && request.getPath().toString().startsWith("/voyage")) {
             return true;
+        } else if ("OPERATIONAL_MANAGER".equals(role) && request.getPath().toString().startsWith("/finder")) {
+            return true;
         } else return "OPERATIONAL_MANAGER".equals(role) && request.getPath().toString().startsWith("/vessel");
     }
 
