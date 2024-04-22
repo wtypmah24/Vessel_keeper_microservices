@@ -6,6 +6,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 /**
  * The GateWayConfig class configures the routes for the gateway service.
  * It defines route rules using RouteLocatorBuilder and applies token validation filters to secure certain routes.
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class GateWayConfig {
 
     private final TokenCheckService service;
+
     /**
      * Constructs a new GateWayConfig with the specified TokenCheckService.
      *
@@ -27,13 +29,14 @@ public class GateWayConfig {
     /**
      * Configures custom routes for the gateway service.
      *
-     * @param builder The RouteLocatorBuilder used to build route locators.
+     * @param builder               The RouteLocatorBuilder used to build route locators.
      * @param tokenValidationFilter The token validation filter for securing routes.
      * @return The RouteLocator containing the configured routes.
      */
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder, TokenValidationFilter tokenValidationFilter) {
         return builder.routes()
+
                 .route("registration-route", r -> r.path("/register/**")
                         .uri("http://app-user:8085"))
 
@@ -43,6 +46,10 @@ public class GateWayConfig {
                 .route("user-route", r -> r.path("/users/**")
                         .filters(f -> f.filter(tokenValidationFilter.apply(new TokenValidationFilter(service))))
                         .uri("http://app-user:8085"))
+
+                .route("finder-route", r -> r.path("/finder/**")
+                        .filters(f -> f.filter(tokenValidationFilter.apply(new TokenValidationFilter(service))))
+                        .uri("http://app-finder:8084"))
 
                 .route("crew-route", r -> r.path("/crew/**")
                         .filters(f -> f.filter(tokenValidationFilter.apply(new TokenValidationFilter(service))))

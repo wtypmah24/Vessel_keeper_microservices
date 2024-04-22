@@ -3,3 +3,4 @@
 **/.idea/
 **/.mvn/
 **/application-secrets.properties
+/VesselFinder_Service/src/main/resources/application-secrets.properties

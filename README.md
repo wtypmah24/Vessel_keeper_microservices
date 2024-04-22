@@ -19,6 +19,7 @@
 7. [Voyage Service](#voyage-service)
 8. [Crew Service](#crew-service)
 9. [VessekFinder Service](#vesselfinder-service)
+10. [Third Party API Documentation](#api-doc)
 
 ## Introduction <a name="introduction"></a>
 
@@ -42,7 +43,7 @@ and users. It provides features for creating, updating, and deleting records rel
 - Testing - Junit, Mockito, Data JPA test, WebMVC test
 - Build System - Maven
 - Containerization - Docker/DockerHub, Docker compose
-- Third party API connection - Feign
+- Third party API connection - Spring Cloud Feign
 - Message brocker - RabbitMQ
 - Routing - Spring Cloud Gateway 
 - Deploy - AWS Elastic Server
@@ -75,18 +76,26 @@ If you want to run it on a server:
 
 ## Authentication Service <a name="authentication-service"></a>
 
+The Authentication Service enables users Registration/Authentication/Authorization
 
-
-- 
--
--
-
+- [TokenService](#):
+  Provides methods for generating JWT tokens.
+- [TokenValidationService](#):
+  Provides methods for validating JWT tokens.
 
 ## Gateway Service <a name="gate-service"></a> 
+The Gateway Service configures the routes for all services
+and defines route rules using RouteLocatorBuilder and applies token validation 
+filters to secure certain routes.
 
--
--
--
+- [TokenCheckService](#):
+  The TokenCheckService class is responsible for sending token verification requests 
+  to the authentication service via RabbitMQ.
+  It utilizes a RabbitTemplate to send and receive messages.
+
+- [TokenValidationToken](#):
+  The TokenValidationFilter class is a GatewayFilter used for token validation and access control in the gateway service.
+  It extracts the token from the request, sends it to the TokenCheckService for validation, and checks access based on the user's role.
 
 ## Vessel Service <a name="vessel-service"></a>
 
@@ -137,7 +146,12 @@ and service records.
   Handles mapping between certificate dtos and entities. 
 
   ## VesselFinder Service <a name="vesselfinder-service"></a>
--
--
--
+- [VesselFinderService](#):
+Provides functionality to retrieve real-time vessel information from a remote service (VesselFinder)
+- [PositionSevice](#): 
+Provides functionality to generate a static Google Maps URL
+with markers for the positions of vessels.
 
+## Third Party API Documentation <a name="api-doc"></a>
+- [Vessel Finder](https://api.vesselfinder.com/docs/)
+- [Google](https://developers.google.com/maps/documentation/maps-static/start)
