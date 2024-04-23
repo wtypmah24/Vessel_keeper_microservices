@@ -25,6 +25,7 @@
 
 The Marine Vessel Keeper application is designed to manage information about vessels, voyages, seamen,
 and users. It provides features for creating, updating, and deleting records related to these entities.
+[Technical Documentation](https://docs.google.com/spreadsheets/d/1rZQIgu0uwJEOilBwxlPcL3a8CGGHRExiFiVdYGyFADQ/edit#gid=215752465)
 
 ## Technologies used <a name="technologies_used"></a>
 
