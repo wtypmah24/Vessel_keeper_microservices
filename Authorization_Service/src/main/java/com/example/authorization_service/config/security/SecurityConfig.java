@@ -78,9 +78,20 @@ public class SecurityConfig {
                         .requestMatchers("/register/**", "/login/**", "/swagger-ui.html").permitAll()
                         .anyRequest().authenticated()
                 )
-                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults())
+                .oauth2ResourceServer((oauth2ResourceServer) ->
+                        oauth2ResourceServer
+                                .jwt((jwt) ->
+                                        {
+                                            try {
+                                                jwt.decoder(jwtDecoder());
+                                            } catch (NoSuchAlgorithmException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+                                )
+                );
         return http.build();
     }
 
